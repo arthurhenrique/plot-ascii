@@ -19,7 +19,7 @@ f(x) = x ^ 2
 */
 int f(int x)
 {
-    return sin(x*3/180);
+    return pow(x, 2);
 }
 
 
