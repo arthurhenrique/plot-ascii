@@ -11,12 +11,10 @@ struct ponto
 };
 
 
-/*
 
+/* Prints a exponencial function
 f(x) = x ^ 2
-(x, x^2)
-
-*/
+(x, x^2) */
 int f(int x)
 {
     return pow(x, 2);
@@ -44,6 +42,7 @@ int main()
 
     i = 0;
 
+    //plot text
     for (x = MAX ; x > MAX * -1; --x)
     {
         for (y = (MAX * -1) ; y < MAX; ++y)
@@ -53,7 +52,6 @@ int main()
                 cout << "X";
             }
             cout << ".";
-            //printf("(%3d, %3d)",p[i].x, p[i].y );
             ++i;
         }
         cout << endl;
