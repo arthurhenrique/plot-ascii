@@ -3,9 +3,6 @@
 
 #include "MathPloText.h"
 
-using namespace std;
-
-
 /* Prints a exponencial function
 f(x) = x ^ 2
 (x, x^2) */
