@@ -12,7 +12,6 @@ int main()
 
     ponto p[(MAX * 2) * (MAX * 2)] = {0};
     
-
     for (x = MAX ; x > MAX * -1; --x)
     {
         for (y = (MAX * -1) ; y < MAX; ++y)
