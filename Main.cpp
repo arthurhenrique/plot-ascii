@@ -25,7 +25,6 @@ int main()
 
     i = 0;
 
-    //plot text
     for (x = MAX ; x > MAX * -1; --x)
     {
         for (y = (MAX * -1) ; y < MAX; ++y)
@@ -34,7 +33,7 @@ int main()
             {
                 cout << "X";
             }
-            cout << ".";
+            cout << " . ";
             ++i;
         }
         cout << endl;
