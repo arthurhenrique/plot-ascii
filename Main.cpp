@@ -1,25 +1,8 @@
 #include <iostream>
-#include <cmath>
-#define MAX 100
+
+#include "MathPloText.h"
 
 using namespace std;
-
-struct ponto
-{
-    int x;
-    int y;
-};
-
-
-
-/* Prints a exponencial function
-f(x) = x ^ 2
-(x, x^2) */
-int f(int x)
-{
-    return pow(x, 2);
-}
-
 
 int main()
 {   
@@ -47,7 +30,7 @@ int main()
     {
         for (y = (MAX * -1) ; y < MAX; ++y)
         {
-            if(x == p[i].x && y == f(p[i].x))
+            if(x == p[i].x && y == MathPloText::fPow2(p[i].x))
             {
                 cout << "X";
             }
