@@ -2,7 +2,7 @@
 
 #ifndef _MATH_PLO_TEXT_H_
 #define _MATH_PLO_TEXT_H_
-#define MAX 25
+#define MAX 10
 
 class MathPloText
 {
