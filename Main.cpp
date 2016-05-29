@@ -1,5 +1,4 @@
 #include <iostream>
-
 #include "MathPloText.h"
 
 using namespace std;
