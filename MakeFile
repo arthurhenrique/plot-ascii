@@ -1,7 +1,7 @@
 CPPUNIT_PATH=./
 
 LIB_DIR=$(CPPUNIT_PATH)/lib
-CPPFLAGS=-fpermissive
+CPPFLAGS=-fpermissive -Wall
 all: Main
 
 Main: MathPloText.o
