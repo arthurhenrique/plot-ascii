@@ -7,7 +7,7 @@
 class MathPloText
 {
 public:
-     
+
     MathPloText();
     ~MathPloText();
     static int fPow(int x, int power);

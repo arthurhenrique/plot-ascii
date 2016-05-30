@@ -5,19 +5,19 @@
 using namespace std;
 
 int main()
-{   
+{
     int i = 0;
     int y = 0;
     int x = 0;
 
     ponto p[(MAX * 2) * (MAX * 2)] = {0};
-    
+
     //TODO Function
     /*
     PLOT
-    
-    (x,  y)    
-    (-1, 1) (0, 1) (1, 1)  
+
+    (x,  y)
+    (-1, 1) (0, 1) (1, 1)
     (-1, 0) (0, 0) (1, 0)
     (-1,-1) (0,-1) (1,-1)
 
@@ -32,9 +32,9 @@ int main()
             p[i].y = y;
             ++i;
         }
-    } 
+    }
 
-    
+
     i = 0;
 
 
@@ -46,6 +46,14 @@ int main()
             {
                 printf("%3c", '#');
             }
+            else if(x==0)
+            {
+                printf("%3c",'|');
+            }
+            else if (y==0)
+            {
+                printf("%3c",'-');
+            }
             else
             {
                 printf("%3c", '`');
@@ -53,7 +61,7 @@ int main()
             ++i;
         }
         cout << endl;
-    } 
+    }
 
     return 0;
 }
