@@ -10,7 +10,7 @@ public:
      
     MathPloText();
     ~MathPloText();
-    static int fPow2(int x);
+    static int fPow(int x, int power);
 };
 
 #endif //_MATH_PLO_TEXT_H_

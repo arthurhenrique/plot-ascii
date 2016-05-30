@@ -4,12 +4,12 @@
 #include "MathPloText.h"
 
 /* Prints a exponencial function
-f(x) = x ^ 2
-(x, x^2) 
+f(x) = x ^ power
+(x, x^power) 
 */
-static int MathPloText::fPow2(int x)
+static int MathPloText::fPow(int x, int power)
 {
-    return pow(x, 2);
+    return pow(x, power);
 }
 
 MathPloText::MathPloText()

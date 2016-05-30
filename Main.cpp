@@ -1,4 +1,5 @@
 #include <iostream>
+#include <stdio.h>
 #include "MathPloText.h"
 
 using namespace std;
@@ -11,9 +12,21 @@ int main()
 
     ponto p[(MAX * 2) * (MAX * 2)] = {0};
     
-    for (x = MAX ; x > MAX * -1; --x)
+    //TODO Function
+    /*
+    PLOT
+    
+    (x,  y)    
+    (-1, 1) (0, 1) (1, 1)  
+    (-1, 0) (0, 0) (1, 0)
+    (-1,-1) (0,-1) (1,-1)
+
+
+    */
+
+    for (y = MAX ; y > (MAX * -1); --y)
     {
-        for (y = (MAX * -1) ; y < MAX; ++y)
+        for (x = (MAX * -1) ; x < MAX; ++x)
         {
             p[i].x = x;
             p[i].y = y;
@@ -21,21 +34,26 @@ int main()
         }
     } 
 
+    
     i = 0;
 
-    for (x = MAX ; x > MAX * -1; --x)
+
+    for (y = MAX ; y > (MAX * -1); --y)
     {
-        for (y = (MAX * -1) ; y < MAX; ++y)
+        for (x = (MAX * -1) ; x < MAX; ++x)
         {
-            if(x == p[i].x && y == MathPloText::fPow2(p[i].x))
+            if(x == p[i].x && y == MathPloText::fPow(p[i].x,2))
             {
-                cout << "X";
+                printf("%3c", '#');
             }
-            cout << " . ";
+            else
+            {
+                printf("%3c", '`');
+            }
             ++i;
         }
         cout << endl;
-    }
-    
+    } 
+
     return 0;
 }
