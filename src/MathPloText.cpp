@@ -12,6 +12,7 @@ static int MathPloText::fPow(int x, int power)
     return pow(x, power);
 }
 
+
 MathPloText::MathPloText()
 {
 

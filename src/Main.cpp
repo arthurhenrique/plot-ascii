@@ -4,7 +4,7 @@
 
 using namespace std;
 
-int main()
+int main(int argc, char *argv[])
 {
     int i = 0;
     int y = 0;
