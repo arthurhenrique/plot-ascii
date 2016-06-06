@@ -15,7 +15,7 @@ static int MathPloText::getPow(int x, int power)
 
 /*
 Fill matrix with values
-      (x, y)
+        (x, y)
 (-1, 1) (0, 1) (1, 1)
 (-1, 0) (0, 0) (1, 0)
 (-1,-1) (0,-1) (1,-1)
@@ -37,7 +37,9 @@ void MathPloText::setMatrix()
         }
     }
 }
+/* plot graph using defined function.
 
+*/
 void MathPloText::plotGraph()
 {
 
