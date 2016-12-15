@@ -1,69 +1,57 @@
 #include <iostream>
 
-#include "MathPloText.h"
+#include "MathPloText.hpp"
 
 using namespace std;
+
+
+MathPloText::MathPloText()
+{
+    mLength = 0; 
+}
+
+
+MathPloText::~MathPloText()
+{
+    
+}
 
 /* Prints a exponencial function
 f(x) = x ^ power
 (x, x^power) 
 */
-static int MathPloText::getPow(int x, int power)
+static int MathPloText::getPow(int xPoint, int power)
 {
-    return pow(x, power);
+    return pow(xPoint, power);
 }
 
-/*
-Fill matrix with values
-        (x, y)
-(-1, 1) (0, 1) (1, 1)
-(-1, 0) (0, 0) (1, 0)
-(-1,-1) (0,-1) (1,-1)
-*/
-void MathPloText::setMatrix()
-{
-
-    int i = 0;
-    int y = 0;
-    int x = 0;
-
-    for ( y = MAX; y > (MAX * -1); --y )
-    {
-        for ( x = (MAX * -1) ; x < MAX; ++x )
-        {
-            p[i].x = x;
-            p[i].y = y;
-            ++i;
-        }
-    }
-}
 /* plot graph using defined function.
 
 */
 void MathPloText::plotGraph()
 {
+    int count  = 0;
+    int yPoint = 0;
+    int xPoint = 0;
+    int length = mLength;
 
-    int i = 0;
-    int y = 0;
-    int x = 0;
-
-    for ( y = MAX; y > (MAX * -1); --y )
+    for ( yPoint = length; yPoint > (length * -1); --yPoint )
     {
-        for ( x = (MAX * -1); x < MAX; ++x )
+        for ( xPoint = (length * -1); xPoint < length; ++xPoint )
         {
-            //(x,y) will be represent by especial char bellow
-            if ( x == p[i].x &&
-                 y == MathPloText::getPow(p[i].x,2) )
+            //(xPoint,yPoint) will be represent by especial char bellow
+            if ( xPoint == this->mPoint[count].x &&
+                 yPoint == MathPloText::getPow(this->mPoint[count].x,2) )
             {
                 printf("%3c", '#');
             }
-            //y-axes will be represent by especial char bellow
-            else if ( x == 0 )
+            //yPoint-axes will be represent by especial char bellow
+            else if ( xPoint == 0 )
             {
                 printf("%3c",'|');
             }
-            //x-axis will be represent by especial char bellow
-            else if ( y == 0 )
+            //xPoint-axis will be represent by especial char bellow
+            else if ( yPoint == 0 )
             {
                 printf("%3c",'-');
             }
@@ -72,19 +60,44 @@ void MathPloText::plotGraph()
             {
                 printf("%3c", '`');
             }
-            ++i;
+            ++count;
         }
         cout << endl;
     }
 }
 
-MathPloText::MathPloText()
+
+/*
+Fill matrix with values
+        (xPoint, yPoint)
+(-1, 1) (0, 1) (1, 1)
+(-1, 0) (0, 0) (1, 0)
+(-1,-1) (0,-1) (1,-1)
+*/
+void MathPloText::setMatrix(int length)
+{
+    int count     = 0;
+    int yPoint    = 0;
+    int xPoint    = 0;
+    int size      = length * length;
+    mLength = length;
+
+    this->mPoint = new Point[size];
+
+    //Fill coordinator xPoint,y based on matrix
+    for ( yPoint = length; yPoint > (length * -1); --yPoint )
+    {
+        for ( xPoint = (length * -1) ; xPoint < length; ++xPoint )
+        {
+            this->mPoint[count].x = xPoint;
+            this->mPoint[count].y = yPoint;
+            ++count;
+        }
+    }
+}
+
+void MathPloText::setConfig()
 {
 
 }
 
-
-MathPloText::~MathPloText()
-{
-    
-}

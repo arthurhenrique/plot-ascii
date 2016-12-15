@@ -1,6 +1,7 @@
 #include <iostream>
+#include <cstdlib>
 
-#include "MathPloText.h"
+#include "MathPloText.hpp"
 
 using namespace std;
 
@@ -8,7 +9,7 @@ int main(int argc, char *argv[])
 {
     MathPloText *math = new MathPloText();
 
-    math->setMatrix();
+    math->setMatrix(10);
 
     math->plotGraph();
     

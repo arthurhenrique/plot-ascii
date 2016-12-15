@@ -1,13 +1,13 @@
 CXX=g++
 
-CPPFLAGS=-fpermissive -Wall
+CPPFLAGS=-g -fpermissive -Wall 
 
 all: Main
 
 Main: MathPloText.o
 	$(CXX) -o MathPloText Main.cpp MathPloText.o
 
-MathPloText.o: MathPloText.cpp MathPloText.h
+MathPloText.o: MathPloText.cpp MathPloText.hpp
 	$(CXX) -c MathPloText.cpp $(CPPFLAGS)
 
 clean:
