@@ -1,6 +1,6 @@
 CXX=g++
 
-CPPFLAGS=-g -fpermissive -Wall 
+CPPFLAGS=-g 
 
 all: Main
 

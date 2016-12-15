@@ -1,11 +1,12 @@
-#ifndef _MATH_PLO_TEXT_H_
-#define _MATH_PLO_TEXT_H_
+#ifndef _MATH_PLO_TEXT_HPP_
+#define _MATH_PLO_TEXT_HPP_
 
-#define MAX_DEFAULT 8
+#define MAX_DEFAULT 10
 
 #include <stdio.h>
 #include <cmath>
 
+#include "MathPloTextFunction.hpp"
 #include "MathPloTextStruct.hpp"
 
 class MathPloText
@@ -17,24 +18,27 @@ public:
     //Destructor
     ~MathPloText();
     
-    //TODO add in another class with only math functions
-    static int getPow(int x, int power);
-    
     //Add parameter and call function by address value 
-    void plotGraph();
+    void PlotGraph();
 
     //Init a matrix 
-    void setMatrix(int length = MAX_DEFAULT);    
+    void SetMatrix(int length = MAX_DEFAULT);    
+
+    //Configuration
+    void SetConfig(char token_xy = '#', char token_x = '-', char token_y = '|',  char token_default = '`');
 
 private:
-    //Configuration
-    void setConfig();
+    //Atributes
+    int length_max_;
+    int length_min_;
+    Point* point_;
 
-    //
-    int mLength;
-
-    Point* mPoint;
+    //Configurations
+    char token_xy_;
+    char token_y_;
+    char token_x_;
+    char token_default_;
 
 };
 
-#endif //_MATH_PLO_TEXT_H_
+#endif //_MATH_PLO_TEXT_HPP_

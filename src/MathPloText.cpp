@@ -7,58 +7,49 @@ using namespace std;
 
 MathPloText::MathPloText()
 {
-    mLength = 0; 
+    length_max_ = 0; 
+    length_min_ = 0; 
+    point_      = 0; 
 }
 
 
 MathPloText::~MathPloText()
 {
-    
-}
-
-/* Prints a exponencial function
-f(x) = x ^ power
-(x, x^power) 
-*/
-static int MathPloText::getPow(int xPoint, int power)
-{
-    return pow(xPoint, power);
 }
 
 /* plot graph using defined function.
 
 */
-void MathPloText::plotGraph()
+void MathPloText::PlotGraph()
 {
-    int count  = 0;
-    int yPoint = 0;
-    int xPoint = 0;
-    int length = mLength;
-
-    for ( yPoint = length; yPoint > (length * -1); --yPoint )
+    int count   = 0;
+    int y_point = 0;
+    int x_point = 0;
+    
+    for (y_point = length_max_; y_point > length_min_; --y_point)
     {
-        for ( xPoint = (length * -1); xPoint < length; ++xPoint )
+        for (x_point = length_min_; x_point < length_max_; ++x_point)
         {
-            //(xPoint,yPoint) will be represent by especial char bellow
-            if ( xPoint == this->mPoint[count].x &&
-                 yPoint == MathPloText::getPow(this->mPoint[count].x,2) )
+            //(x_point,y_point) will be represent by especial char bellow
+            if (x_point == point_[count].x &&
+                y_point == pow(point_[count].x, 2))
             {
-                printf("%3c", '#');
+                printf("%3c", token_xy_); 
             }
-            //yPoint-axes will be represent by especial char bellow
-            else if ( xPoint == 0 )
+            //y_point-axes will be represent by especial char bellow
+            else if (x_point == 0)
             {
-                printf("%3c",'|');
+                printf("%3c", token_y_); 
             }
-            //xPoint-axis will be represent by especial char bellow
-            else if ( yPoint == 0 )
+            //x_point-axis will be represent by especial char bellow
+            else if ( y_point == 0 )
             {
-                printf("%3c",'-');
+                printf("%3c",token_x_); 
             }
             //complete this graph with this especial char bellow
             else
             {
-                printf("%3c", '`');
+                printf("%3c", token_default_);
             }
             ++count;
         }
@@ -69,35 +60,39 @@ void MathPloText::plotGraph()
 
 /*
 Fill matrix with values
-        (xPoint, yPoint)
+        (x, y)
 (-1, 1) (0, 1) (1, 1)
 (-1, 0) (0, 0) (1, 0)
 (-1,-1) (0,-1) (1,-1)
 */
-void MathPloText::setMatrix(int length)
+void MathPloText::SetMatrix(int length)
 {
-    int count     = 0;
-    int yPoint    = 0;
-    int xPoint    = 0;
-    int size      = length * length;
-    mLength = length;
+    length_min_ = length * -1;
+    length_max_ = length;
 
-    this->mPoint = new Point[size];
+    int count   = 0;
+    int y_point = 0;
+    int x_point = 0;
 
-    //Fill coordinator xPoint,y based on matrix
-    for ( yPoint = length; yPoint > (length * -1); --yPoint )
+    //Fill point's struct 
+    point_ = new Point[length * length];
+
+    //Fill coordinator x and y based on matrix
+    for (y_point = length_max_; y_point > length_min_; --y_point)
     {
-        for ( xPoint = (length * -1) ; xPoint < length; ++xPoint )
+        for (x_point = length_min_; x_point < length_max_; ++x_point)
         {
-            this->mPoint[count].x = xPoint;
-            this->mPoint[count].y = yPoint;
+            point_[count].x = x_point;
+            point_[count].y = y_point;
             ++count;
         }
     }
 }
 
-void MathPloText::setConfig()
+void MathPloText::SetConfig(char token_xy, char token_x, char token_y, char token_default)
 {
-
+    token_xy_      = token_xy;
+    token_x_       = token_x;
+    token_y_       = token_y;
+    token_default_ = token_default;
 }
-
