@@ -7,12 +7,12 @@ using namespace std;
 
 int main(int argc, char *argv[])
 {
-    MathPloText *math = new MathPloText();
+  MathPloText *math = new MathPloText();
 
-    math->SetMatrix(10);
+  math->SetMatrix(10);
 
-    math->PlotGraph();
-    
-    return 0;
+  math->PlotGraph();
+  
+  return 0;
 
 }

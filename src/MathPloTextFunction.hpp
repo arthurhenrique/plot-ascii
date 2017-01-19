@@ -9,13 +9,13 @@
 class MathPloTextFunction
 {
 public:
-    //Costructor
-    MathPloTextFunction();
+  //Costructor
+  MathPloTextFunction();
 
-    //Destructor
-    ~MathPloTextFunction();
-    
-    static int GetPow(int x, int power);
+  //Destructor
+  ~MathPloTextFunction();
+  
+  static int GetPow(int x, int power);
     
 };
 

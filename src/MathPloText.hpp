@@ -12,32 +12,32 @@
 class MathPloText
 {
 public:
-    //Costructor
-    MathPloText();
+  //Costructor
+  MathPloText();
 
-    //Destructor
-    ~MathPloText();
-    
-    //Add parameter and call function by address value 
-    void PlotGraph();
+  //Destructor
+  ~MathPloText();
 
-    //Init a matrix 
-    void SetMatrix(int length = MAX_DEFAULT);    
+  //Add parameter and call function by address value 
+  void PlotGraph();
 
-    //Configuration
-    void SetConfig(char token_xy = '#', char token_x = '-', char token_y = '|',  char token_default = '`');
+  //Init a matrix 
+  void SetMatrix(int length = MAX_DEFAULT);    
+
+  //Configuration
+  void SetConfig(char token_xy = '#', char token_x = '-', char token_y = '|',  char token_default = '`');
 
 private:
-    //Atributes
-    int length_max_;
-    int length_min_;
-    Point* point_;
+  //Atributes
+  int length_max_;
+  int length_min_;
+  Point* point_;
 
-    //Configurations
-    char token_xy_;
-    char token_y_;
-    char token_x_;
-    char token_default_;
+  //Configurations
+  char token_xy_;
+  char token_y_;
+  char token_x_;
+  char token_default_;
 
 };
 
