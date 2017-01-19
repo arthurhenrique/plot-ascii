@@ -9,9 +9,7 @@ int main(int argc, char *argv[])
 {
     MathPloText *math = new MathPloText();
 
-    math->SetConfig('\43');
-
-    math->SetMatrix(15);
+    math->SetMatrix(10);
 
     math->PlotGraph();
     

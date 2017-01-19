@@ -10,6 +10,8 @@ MathPloText::MathPloText()
     length_max_ = 0; 
     length_min_ = 0; 
     point_      = 0; 
+
+    SetConfig();
 }
 
 
@@ -18,7 +20,7 @@ MathPloText::~MathPloText()
 }
 
 /* plot graph using defined function.
-
+TODO Improve this ugly code
 */
 void MathPloText::PlotGraph()
 {
@@ -82,6 +84,7 @@ void MathPloText::SetMatrix(int length)
     {
         for (x_point = length_min_; x_point < length_max_; ++x_point)
         {
+            printf("%d %d\n",point_[count].x, point_[count].y );
             point_[count].x = x_point;
             point_[count].y = y_point;
             ++count;
