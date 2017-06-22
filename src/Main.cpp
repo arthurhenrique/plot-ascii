@@ -5,14 +5,16 @@
 
 using namespace std;
 
+
 int main(int argc, char *argv[])
 {
   MathPloText *math = new MathPloText();
 
-  math->SetMatrix(10);
+  math->SetConfig();
 
-  math->PlotGraph();
+  math->SetMatrix();
+
+  math->PlotGraph(Pow, 2);
   
   return 0;
-
 }
