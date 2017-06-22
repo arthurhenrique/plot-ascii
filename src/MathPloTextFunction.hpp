@@ -4,19 +4,31 @@
 
 #include <stdio.h>
 #include <cmath>
+#include <functional>
 
 
-class MathPloTextFunction
-{
-public:
-  //Costructor
-  MathPloTextFunction();
+inline double Add(double a, double b){
+  return a+b;
+}
 
-  //Destructor
-  ~MathPloTextFunction();
-  
-  static int GetPow(int x, int power);
-    
-};
+inline double Sub(double a, double b){
+  return a-b;
+}
+
+inline double Mult(double a, double b){
+  return a*b;
+}
+
+inline double Div(double a, double b){
+  return a/b;
+}
+
+inline double Pow(double a, double b){
+  return pow(a,b);
+}
+
+inline double Combiner(double a, double b, std::function<double (double,double)> func){
+  return func(a,b);
+}
 
 #endif //_MATH_PLO_TEXT_FUNCTION_HPP_
