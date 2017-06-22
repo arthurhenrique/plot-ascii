@@ -1,14 +1,14 @@
 CXX=g++
 
-CPPFLAGS=-g 
+CPPFLAGS=-g -std=c++11
 
 all: Main
 
 Main: MathPloText.o
-	$(CXX) -o MathPloText Main.cpp MathPloText.o
+	$(CXX) $(CPPFLAGS) -o MathPloText Main.cpp MathPloText.o 
 
 MathPloText.o: MathPloText.cpp MathPloText.hpp
-	$(CXX) -c MathPloText.cpp $(CPPFLAGS)
+	$(CXX) $(CPPFLAGS) -c MathPloText.cpp 
 
 clean:
 	rm -f *.o MathPloText *~
