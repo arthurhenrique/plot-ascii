@@ -2,51 +2,49 @@
 
 #include "MathPloText.hpp"
 
+
 using namespace std;
 
 
 MathPloText::MathPloText()
 {
-  length_max_ = 0; 
-  length_min_ = 0; 
-  point_      = 0; 
-
-  SetConfig();
+  length_max_ = 0;
+  length_min_ = 0;
+  point_      = 0;
 }
-
 
 MathPloText::~MathPloText()
 {
 }
 
 /* plot graph using defined function.
-TODO Improve this ugly code
+
 */
-void MathPloText::PlotGraph()
+void MathPloText::PlotGraph(std::function<double (double,double)> func, double __y)
 {
   int count   = 0;
   int y_point = 0;
   int x_point = 0;
-  
+
   for (y_point = length_max_; y_point > length_min_; --y_point)
   {
     for (x_point = length_min_; x_point < length_max_; ++x_point)
     {
       //(x_point,y_point) will be represent by especial char bellow
-      if (x_point ==     point_[count].x &&
-          y_point == pow(point_[count].x, 2))
+      if (x_point == point_[count].x &&
+          y_point == Combiner(point_[count].x, __y, func))
       {
-        printf("%3c", token_xy_); 
+        printf("%3c", token_xy_);
       }
       //y_point-axes will be represent by especial char bellow
       else if (x_point == 0)
       {
-        printf("%3c", token_y_); 
+        printf("%3c", token_y_);
       }
       //x_point-axis will be represent by especial char bellow
       else if ( y_point == 0 )
       {
-        printf("%3c",token_x_); 
+        printf("%3c",token_x_);
       }
       //complete this graph with this especial char bellow
       else
@@ -76,7 +74,7 @@ void MathPloText::SetMatrix(int length)
   int y_point = 0;
   int x_point = 0;
 
-  //Fill point's struct 
+  //Fill point's struct
   point_ = new Point[length * length];
 
   //Fill coordinator x and y based on matrix
@@ -84,13 +82,9 @@ void MathPloText::SetMatrix(int length)
   {
     for (x_point = length_min_; x_point < length_max_; ++x_point)
     {
-        for (x_point = length_min_; x_point < length_max_; ++x_point)
-        {
-            printf("%d %d\n",point_[count].x, point_[count].y );
-            point_[count].x = x_point;
-            point_[count].y = y_point;
-            ++count;
-        }
+        point_[count].x = x_point;
+        point_[count].y = y_point;
+        ++count;
     }
   }
 }
