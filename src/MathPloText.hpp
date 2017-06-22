@@ -5,6 +5,7 @@
 
 #include <stdio.h>
 #include <cmath>
+#include <functional>
 
 #include "MathPloTextFunction.hpp"
 #include "MathPloTextStruct.hpp"
@@ -18,14 +19,15 @@ public:
   //Destructor
   ~MathPloText();
 
-  //Add parameter and call function by address value 
-  void PlotGraph();
+  //Parameter and call function by address value 
+  void PlotGraph(std::function<double (double,double)> func, double __y);
 
   //Init a matrix 
   void SetMatrix(int length = MAX_DEFAULT);    
 
   //Configuration
   void SetConfig(char token_xy = '#', char token_x = '-', char token_y = '|',  char token_default = '`');
+
 
 private:
   //Atributes
