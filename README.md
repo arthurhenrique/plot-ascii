@@ -4,7 +4,7 @@ MathPloText
 Cartesian plan plotted with ASCII
 
 
-![alt text] (./sample/sample.png "X^2")
+![alt text](./sample/sample.png "X^2")
 
 TODO List
 ---------
