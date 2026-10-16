@@ -1,12 +1,49 @@
 # plot-ascii
 
-Cartesian plan plotted with ASCII
+Cartesian plan plotted with ASCII.
 
-![alt text](./sample/sample.png "X^2")
+![x^2](./sample/pow.gif)
 
-## TODO
+![Matharium](./sample/matharium.gif)
 
-- Implement severals Math functions, as derivative, integral from a defined function.
-- Call a defined function by address in a parameter of generic function.
-- Implement anothers lines of function at the same time, using mutex concept.
-- Implement a interpreted language to write a function in CLI mode and plot.
+![SinCosh](./sample/sincosh.gif)
+
+## Run
+
+```sh
+cd src && make
+./MathPloText        # x^2, Matharium and SinCosh
+./MathPloText -a     # animated
+```
+
+Any function of x:
+
+```sh
+./MathPloText "x^2"
+./MathPloText -x -6.3:6.3 "sin(x)" "D(sin(x))" "I(sin(x))"
+./MathPloText -a -x -4:4 "sin(6.5x)^2 / cosh(x/2.6)"
+```
+
+| option | |
+|---|---|
+| `-a` | animate |
+| `-x MIN:MAX` | x range (default `-10:10`) |
+| `-y MIN:MAX` | y range (default fits the curve) |
+| `-s WIDTHxHEIGHT` | size (default `57x30`) |
+
+Functions: `+ - * / ^ mod |x| pi e sin cos tan sinh cosh tanh exp ln log sqrt floor ceil round`,
+`D(f)` derivative and `I(f)` integral.
+
+## C++
+
+```cpp
+MathPloText *math = new MathPloText();
+
+math->SetConfig();
+math->SetMatrix();
+math->AnimateGraph(Pow, 2);
+
+math->AddCurve(Matharium);
+math->SetWindow(-20, 8, -11, 27);
+math->AnimateCurves();
+```
