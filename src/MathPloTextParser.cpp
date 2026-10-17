@@ -5,6 +5,8 @@
 
 #include "MathPloTextParser.hpp"
 #include "MathPloTextFunction.hpp"
+#include "MathPloTextArsenal.hpp"
+#include "MathPloTextFluid.hpp"
 
 
 typedef double (*MathFunc)(double);
@@ -42,6 +44,63 @@ static const std::unordered_map<std::string, MathFunc> FUNCTIONS = {
   {"gamma",       Gamma},
   {"matharium",   Matharium},
   {"sincosh",     SinCosh},
+  {"erf",         erf},
+  {"erfc",        erfc},
+  {"lgamma",      lgamma},
+  {"bessel1",     j1},
+  {"neumann",     y0},
+  {"cbrt",        cbrt},
+  {"zeta",        Zeta},
+  {"lambertw",    LambertW},
+  {"pendulum",    Pendulum},
+  {"primecount",  PrimeCount},
+  {"totient",     Totient},
+  {"divisors",    Divisors},
+  {"digitsum",    DigitSum},
+  {"collatz",     Collatz},
+  {"mobius",      Mobius},
+  {"mertens",     Mertens},
+  {"logistic",    Logistic},
+  {"lyapunov",    Lyapunov},
+  {"sinemap",     SineMap},
+  {"mandelbrot",  Mandelbrot},
+  {"minkowski",   Minkowski},
+  {"noise",       Noise},
+  {"terrain",     Terrain},
+  {"skyline",     Skyline},
+  {"batmantop",   BatmanTop},
+  {"batmanbottom", BatmanBottom},
+  {"ecg",         Ecg},
+};
+
+typedef double (*MathFunc2)(double, double);
+
+static double Min(double a, double b)     { return fmin(a, b); }
+static double Max(double a, double b)     { return fmax(a, b); }
+static double BesselN(double n, double x) { return jn((int) n, x); }
+
+//every function of two arguments the language knows, by name
+static const std::unordered_map<std::string, MathFunc2> FUNCTIONS2 = {
+  {"pow",         pow},
+  {"min",         Min},
+  {"max",         Max},
+  {"mod",         Mod},
+  {"atan2",       atan2},
+  {"hypot",       hypot},
+  {"besseln",     BesselN},
+  {"legendre",    Legendre},
+  {"oscillator",  Oscillator},
+  {"takagi",      Takagi},
+  {"lamboseen",   LambOseen},
+  {"stokes1",     Stokes1},
+  {"stokes2",     Stokes2},
+  {"poiseuille",  Poiseuille},
+  {"burgers",     Burgers},
+  {"heat",        Heat},
+  {"pluck",       Pluck},
+  {"soliton",     Soliton},
+  {"packet",      Packet},
+  {"density",     PacketDensity},
 };
 
 MathPloTextParser::MathPloTextParser(std::string expr)
@@ -51,11 +110,13 @@ MathPloTextParser::MathPloTextParser(std::string expr)
   pos_      = 0;
   abs_      = 0;
   x_        = 0;
+  t_        = 0;
 }
 
-double MathPloTextParser::Eval(double x)
+double MathPloTextParser::Eval(double x, double t)
 {
   x_     = x;
+  t_     = t;
   pos_   = 0;
   abs_   = 0;
   error_ = "";
@@ -180,6 +241,7 @@ double MathPloTextParser::Primary()
     std::string name = expr_.substr(start, pos_ - start);
 
     if (name == "x")  return x_;
+    if (name == "t")  return t_;
     if (name == "pi") return M_PI;
     if (name == "e")  return M_E;
 
@@ -217,6 +279,15 @@ double MathPloTextParser::Function(std::string name)
       if (Accept(',')) from = Expression();
       y = Integral(f, from, x_);
     }
+  }
+  else if (FUNCTIONS2.count(name) == 1)
+  {
+    if (!Accept(','))
+    {
+      Fail(name + "() takes 2 arguments");
+      return 0;
+    }
+    y = FUNCTIONS2.at(name)(y, Expression());
   }
   else
   {

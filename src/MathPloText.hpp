@@ -30,11 +30,17 @@ public:
   //Add a function y = func(x) to be plotted with token
   void AddCurve(std::function<double (double)> func, char token = '#');
 
+  //Add a function y = func(x, t) that changes with time t
+  void AddWave(std::function<double (double,double)> func, char token = '#');
+
   //Plot every curve added
   void PlotCurves();
 
   //Plot every curve added, column by column, like a pen drawing it
   void AnimateCurves(int delay_ms = 30);
+
+  //Plot every curve added, one frame for each time from 0 to t_max
+  void AnimateTime(double t_max, int frames = 60, int delay_ms = 60);
 
   //Init a matrix 
   void SetMatrix(int length = MAX_DEFAULT);    
@@ -43,8 +49,8 @@ public:
   void SetWindow(double x_min, double x_max, double y_min, double y_max,
                  int width = 57, int height = 30);
 
-  //Find y range that fits every curve added
-  void FitWindow();
+  //Find y range that fits every curve added, from time 0 to t_max
+  void FitWindow(double t_max = 0);
 
   //Configuration
   void SetConfig(char token_xy = '#', char token_x = '-', char token_y = '|',  char token_default = '`');
@@ -74,6 +80,7 @@ private:
   double y_max_;
   int width_;
   int height_;
+  double time_;
 
   //Configurations
   char token_xy_;

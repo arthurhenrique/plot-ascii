@@ -1,0 +1,116 @@
+# Navier-Stokes and fluids|Exact solutions of the Navier-Stokes equations, animated in time with `-t`. Whether a smooth 3D flow can blow up is a Millennium Prize problem: OpenAI announced a proof of blow-up in September 2026, and the Clay Institute still lists it as open.
+lamboseen|Lamb-Oseen vortex|a whirlpool spreading out as viscosity eats it|-t 3 -x -5:5 -y -2:2 -s 57x20|lamboseen(x, t)
+stokes1|Stokes' first problem|a plate starts moving under the fluid, and the fluid above follows|-t 4 -x 0:6 -y 0:1.05 -s 57x16|stokes1(x, t)
+stokes2|Stokes' second problem|a plate going back and forth; the motion fades with height|-t 12.6 -x 0:8 -y -1.05:1.05 -s 57x16|stokes2(x, t)
+poiseuille|Channel flow starting up|pushed from rest until it becomes the Poiseuille parabola|-t 1.5 -x -1:1 -y 0:1.05 -s 57x18|poiseuille(x, t)
+taylorgreen|Taylor-Green vortex|a row of vortices fading together|-t 10 -x -6.3:6.3 -y -1.05:1.05 -s 57x16|sin(x) e^(-0.2t)
+burgers|Burgers, a shock|the 1D Navier-Stokes: a sine wave steepens into a shock at t = 1|-t 3 -x -3.2:3.2 -y -1.2:1.2 -s 57x18|burgers(x, t)
+# Waves in time|Equations of physics, animated in time with `-t`.
+heat|Heat equation|a block of heat spreading out|-t 3 -x -5:5 -y 0:1.05 -s 57x16|heat(x, t)
+pluck|Wave equation|a plucked bump splits into two|-t 8 -x -10:10 -y 0:1.05 -s 57x14|pluck(x, t)
+soliton|KdV solitons|the tall fast wave passes through the small one and both come out the same|-t 6 -x -15:15 -y 0:2.1 -s 57x16|soliton(x, t)
+packet|Schrodinger wave packet|a free electron: its wave and where it can be|-t 4 -x -4:16 -y -0.7:0.7 -s 57x18|density(x, t);;packet(x, t)
+standing|Standing wave|`sin(x) cos(t)`|-t 6.3 -x -6.3:6.3 -y -1.05:1.05 -s 57x14|sin(x) cos(t)
+travelling|Travelling wave|`sin(x - t)`|-t 6.3 -x -6.3:6.3 -y -1.05:1.05 -s 57x14|sin(x - t)
+group|Group velocity|two close waves: the beat moves at twice the speed of the ripples|-t 21 -x -20:20 -y -2.1:2.1 -s 57x18|sin(2x - 2t) + sin(2.3x - 2.6t);;2 cos(0.15x - 0.3t)
+dampedwave|Damped standing wave|`sin(2x) cos(4t) e^(-t/3)`|-t 6 -x -6.3:6.3 -y -1.05:1.05 -s 57x14|sin(2x) cos(4t) e^(-t/3)
+ripple|Ripple|a stone dropped in water|-t 6.3 -x -10:10 -y -1.05:1.05 -s 57x14|sin(3 abs(x) - 3t) e^(-abs(x)/4)
+# From the reels|Curves from matharium's videos, drawn with `-a`.
+matharium|Matharium|`(1 - 2 floor(2 (x mod 1))) abs(sin(pi x/4)) x + abs(x) - 10`|-a -x -20:8 -y -11:27 -s 57x39|matharium(x)
+sincosh|SinCosh|`sin(6.5x)^2 / cosh(x/2.6)`|-a -x -4:4 -y -0.1:1.05 -s 57x18|sincosh(x)
+sinexp|sin(e^-x)|`sin(e^(-x))` riding on `e^(-x)`|-a -x -1.8:6.3 -y -1.2:6 -s 57x22|sin(e^(-x));;e^(-x)
+blancmange|Blancmange|triangle waves stacked into a fractal|-a -x 0:2 -y 0:0.72 -s 57x18|blancmange(x)
+expsaw|Exponential sawtooth|a sawtooth of decaying exponentials, `e^(-3 (x mod 1))`|-a -x 0:5 -y 0:1.05 -s 57x16|expsaw(x)
+expmod|Exponential fan|mod 1 slicing an exponential into a fan of lines, `e^x mod 1`|-a -x 0:2.6 -y 0:1.05 -s 57x18|expmod(x)
+# Classic curves|
+cubic|A cubic and its derivatives|`x^3 - 3x`, `D(...)` and `D(D(...))`|-a -x -2.5:2.5 -y -6:6 -s 57x22|x^3 - 3x;;D(x^3 - 3x);;D(D(x^3 - 3x))
+circle|Circle|two halves, `sqrt(1 - x^2)`|-a -x -1.25:1.25 -y -1.15:1.15 -s 37x28|sqrt(1 - x^2);;-sqrt(1 - x^2)
+astroid|Astroid|`(1 - abs(x)^(2/3))^(3/2)`|-a -x -1.25:1.25 -y -1.15:1.15 -s 37x28|(1 - abs(x)^(2/3))^(3/2);;-(1 - abs(x)^(2/3))^(3/2)
+squircle|Squircle|`(1 - x^4)^(1/4)`|-a -x -1.25:1.25 -y -1.15:1.15 -s 37x28|(1 - x^4)^(1/4);;-(1 - x^4)^(1/4)
+hyperbola|Hyperbola|`1/x`|-a -x -5:5 -y -5:5 -s 57x24|1/x
+inverse|Inverse functions|`e^x` and `ln(x)`, mirrors across `y = x`|-a -x -3:3 -y -3:3 -s 41x30|e^x;;ln(x);;x
+xx|x^x|lowest at `1/e`|-a -x 0:2 -y 0:4.2 -s 57x18|x^x
+agnesi|Witch of Agnesi|`8 / (x^2 + 4)`|-a -x -8:8 -y 0:2.1 -s 57x14|8 / (x^2 + 4)
+catenary|Catenary|a hanging chain, `cosh(x)`, against the parabola `1 + x^2/2`|-a -x -3:3 -y 0:10 -s 57x20|cosh(x);;1 + x^2/2
+floor|Staircase|`floor(x)` and the fractional part `x - floor(x)`|-a -x -4:4 -y -4.2:4.2 -s 57x20|floor(x);;x - floor(x)
+limite|The number e|`(1 + 1/x)^x` creeping up to `e`|-a -x 0.1:20 -y 0:3 -s 57x16|(1 + 1/x)^x;;e
+heart|Heart|`x^(2/3) + 0.9 sqrt(3.3 - x^2) sin(10 pi x)`|-a -x -1.85:1.85 -y -1.5:2.6 -s 37x30|heart(x)
+batman|Batman|the Batman logo in two functions|-a -x -7.5:7.5 -y -3.2:3.2 -s 57x24|batmantop(x);;batmanbottom(x)
+# Waves and signals|
+tan|Tangent|`tan(x)`|-a -x -6.3:6.3 -y -5:5 -s 57x22|tan(x)
+sec|Secant and cosecant|`1/cos(x)` and `1/sin(x)`|-a -x -6.3:6.3 -y -5:5 -s 57x22|1/cos(x);;1/sin(x)
+rectified|Rectified sine|`abs(sin(x))`|-a -x -10:10 -y 0:1.05 -s 57x12|abs(sin(x))
+asinsin|Triangle wave|`asin(sin(x))`|-a -x -10:10 -y -1.7:1.7 -s 57x14|asin(sin(x))
+atantan|Sawtooth wave|`atan(tan(x))`|-a -x -10:10 -y -1.7:1.7 -s 57x14|atan(tan(x))
+square|Square wave|its first 8 Fourier terms|-a -x -6.3:6.3 -y -1.4:1.4 -s 57x16|square(x)
+fourier|Fourier series|the square wave with 1, 2 and 8 terms|-a -x -6.3:6.3 -y -1.4:1.4 -s 57x18|square(x);;4/pi (sin(x) + sin(3x)/3);;4/pi sin(x)
+sawfourier|Sawtooth by Fourier|`2 (sin(x) - sin(2x)/2 + sin(3x)/3 - ...)`|-a -x -10:10 -y -3.5:3.5 -s 57x16|2 (sin(x) - sin(2x)/2 + sin(3x)/3 - sin(4x)/4 + sin(5x)/5 - sin(6x)/6)
+dirichlet|Dirichlet kernel|`sin(5.5x) / sin(x/2)`|-a -x -10:10 -y -4:11.5 -s 57x20|sin(5.5x) / sin(x/2)
+am|AM radio|`sin(3x) (1 + 0.6 sin(x/2))`|-a -x -12.6:12.6 -y -1.7:1.7 -s 57x16|sin(3x) (1 + 0.6 sin(x/2));;1 + 0.6 sin(x/2)
+fm|FM radio|`sin(2x + 3 sin(x/3))`|-a -x -10:10 -y -1.05:1.05 -s 57x12|sin(2x + 3 sin(x/3))
+chirp|Chirp|`sin(x^2)`|-a -x 0:6 -y -1.1:1.1 -s 57x14|sin(x^2)
+beats|Beats|`sin(6x) sin(x/2)`|-a -x -6.3:6.3 -y -1.1:1.1 -s 57x16|sin(6x) sin(x/2)
+damped|Damped oscillation|`e^(-x/4) sin(4x)`|-a -x 0:12 -y -1:1 -s 57x18|e^(-x/4) sin(4x)
+xsin|x sin(1/x)|squeezed to zero|-a -x -0.6:0.6 -y -0.15:0.6 -s 57x18|x sin(1/x)
+sea|Waves at sea|`sin(x) + sin(2.3x)/2 + sin(5.1x)/4`|-a -x 0:20 -y -2:2 -s 57x14|sin(x) + sin(2.3x)/2 + sin(5.1x)/4
+ecg|Heartbeat|an electrocardiogram: P wave, QRS spike, T wave|-a -x 0:4 -y -0.35:1.05 -s 57x16|ecg(x)
+# Calculus|
+taylor|Taylor series of sin|`x`, `x - x^3/6` and `x - x^3/6 + x^5/120` hugging `sin(x)`|-a -x -6.3:6.3 -y -2:2 -s 57x20|sin(x);;x;;x - x^3/6;;x - x^3/6 + x^5/120
+riemannsum|Riemann sum|steps under `x^2`|-a -x 0:3 -y 0:9 -s 57x20|x^2;;(floor(4x)/4)^2
+gauss|Gaussian and its integral|`e^(-x^2)` and `I(e^(-x^2))`|-a -x -3:3 -y -1:1.05 -s 57x16|e^(-x^2);;I(e^(-x^2))
+dottie|Dottie number|`cos(cos(cos(...)))` flattening to 0.739|-a -x -6.3:6.3 -y -1.05:1.05 -s 57x16|cos(cos(cos(cos(cos(cos(x))))));;cos(cos(x));;cos(x)
+# Special functions|
+erf|Error function|`erf(x)` and `erfc(x)`|-a -x -3:3 -y -1.05:2.05 -s 57x16|erf(x);;erfc(x)
+gamma|Gamma|the factorial for any x, `gamma(n) = (n-1)!`|-a -x -4.5:4.5 -y -6:6 -s 57x22|gamma(x)
+lgamma|Log gamma and digamma|`lgamma(x)` and its derivative|-a -x 0.1:6 -y -5:5 -s 57x18|lgamma(x);;D(lgamma(x))
+bessel|Bessel functions|`J0`, `J1` and `J2`, the vibrations of a drum head|-a -x 0:20 -y -0.45:1.05 -s 57x16|bessel(x);;bessel1(x);;besseln(2, x)
+neumann|Neumann function|`Y0`, the Bessel of the second kind|-a -x 0.05:20 -y -1.5:0.6 -s 57x16|neumann(x)
+sinc|Sinc|`sin(x) / x`|-a -x -20:20 -y -0.3:1.05 -s 57x16|sinc(x)
+si|Sine integral|`I(sinc(x))` oscillating around pi/2|-a -x -20:20 -y -2:2 -s 57x16|I(sinc(x));;pi/2
+fresnel|Fresnel integrals|`C(x)` and `S(x)`, the two halves of the Euler spiral|-a -x -5:5 -y -0.85:0.85 -s 57x16|I(cos(pi x^2 / 2));;I(sin(pi x^2 / 2))
+zeta|Riemann zeta|`zeta(2) = pi^2/6`, a pole at 1|-a -x -4:6 -y -4:5 -s 57x22|zeta(x)
+lambertw|Lambert W|the `w` with `w e^w = x`|-a -x -0.4:6 -y -1.1:1.6 -s 57x16|lambertw(x)
+legendre|Legendre polynomials|`P1` to `P5`|-a -x -1:1 -y -1.05:1.05 -s 57x20|legendre(1, x);;legendre(2, x);;legendre(3, x);;legendre(4, x);;legendre(5, x)
+chebyshev|Chebyshev polynomials|`cos(n acos(x))`|-a -x -1:1 -y -1.05:1.05 -s 57x20|cos(2 acos(x));;cos(3 acos(x));;cos(5 acos(x))
+# Physics|
+oscillator|Quantum harmonic oscillator|the first four states sitting on their energy levels|-a -x -4.5:4.5 -y 0:4.6 -s 57x26|oscillator(0, x) + 0.5;;oscillator(1, x) + 1.5;;oscillator(2, x) + 2.5;;oscillator(3, x) + 3.5;;x^2/2
+hydrogen|Hydrogen atom|how far the electron is, in the 1s, 2s and 2p states|-a -x 0:16 -y 0:0.6 -s 57x16|4 x^2 e^(-2x);;x^2 (2 - x)^2 e^(-x) / 8;;x^4 e^(-x) / 24
+box|Particle in a box|the first three states|-a -x 0:1 -y 0:3.5 -s 57x22|sin(pi x)^2;;sin(2 pi x)^2 + 1.2;;sin(3 pi x)^2 + 2.4
+pendulum|Pendulum period|how much longer a swing of x radians takes|-a -x 0:3.1 -y 0:4 -s 57x16|pendulum(x)
+projectile|Projectile|thrown at 30, 45 and 60 degrees|-a -x 0:10.5 -y 0:4 -s 57x16|x tan(pi/4) - 9.8 x^2 / (200 cos(pi/4)^2);;x tan(pi/3) - 9.8 x^2 / (200 cos(pi/3)^2);;x tan(pi/6) - 9.8 x^2 / (200 cos(pi/6)^2)
+planck|Planck's law|black body light at three temperatures|-a -x 0:12 -y 0:6 -s 57x16|x^3 / (e^(x/1.6) - 1);;x^3 / (e^(x/1.3) - 1);;x^3 / (e^x - 1)
+maxwell|Maxwell-Boltzmann|speeds of gas molecules, cold to hot|-a -x 0:5 -y 0:1.2 -s 57x16|4/sqrt(pi) x^2 e^(-x^2);;4/sqrt(pi) x^2 e^(-x^2/2) / 2^1.5;;4/sqrt(pi) x^2 e^(-x^2/4) / 8
+lennardjones|Lennard-Jones|the pull and push between two atoms|-a -x 0.9:3 -y -1.2:1.5 -s 57x16|4 (x^-12 - x^-6)
+morse|Morse potential|a chemical bond|-a -x 0:6 -y -1.1:2 -s 57x16|(1 - e^(-(x - 1)))^2 - 1
+resonance|Resonance|a swing pushed at x times its own frequency, three dampings|-a -x 0:2.5 -y 0:6 -s 57x18|1 / sqrt((1 - x^2)^2 + (0.2x)^2);;1 / sqrt((1 - x^2)^2 + (0.5x)^2);;1 / sqrt((1 - x^2)^2 + (1.2x)^2)
+rc|RC circuit|a capacitor charging and discharging|-a -x 0:6 -y 0:1.05 -s 57x14|1 - e^(-x);;e^(-x)
+fermi|Fermi-Dirac|electrons filling levels, cold to hot|-a -x 0:10 -y 0:1.05 -s 57x14|1 / (e^((x - 5)/0.1) + 1);;1 / (e^((x - 5)/0.5) + 1);;1 / (e^((x - 5)/1.2) + 1)
+slits|Single and double slit|light through one slit and through two|-a -x -10:10 -y 0:1.05 -s 57x16|cos(3x)^2 sinc(x)^2;;sinc(x)^2
+activation|Neural network activations|sigmoid, tanh, ReLU, softplus and GELU|-a -x -4:4 -y -1.2:3 -s 57x20|1 / (1 + e^(-x));;tanh(x);;max(0, x);;ln(1 + e^x);;x (1 + erf(x / sqrt(2))) / 2
+# Probability|
+normal|Normal distribution|three widths|-a -x -6:6 -y 0:0.85 -s 57x16|e^(-x^2/0.5) / (0.5 sqrt(2 pi));;e^(-x^2/2) / sqrt(2 pi);;e^(-x^2/8) / (2 sqrt(2 pi))
+cauchy|Cauchy against normal|heavy tails|-a -x -6:6 -y 0:0.45 -s 57x14|1 / (pi (1 + x^2));;e^(-x^2/2) / sqrt(2 pi)
+poisson|Poisson distribution|events per hour, 4 on average|-a -x 0:14 -y 0:0.22 -s 57x14|e^(-4) 4^floor(x) / gamma(floor(x) + 1)
+gammadist|Gamma distribution|waiting for 1, 2 and 5 events|-a -x 0:12 -y 0:1.05 -s 57x16|x^0 e^(-x);;x e^(-x);;x^4 e^(-x) / 24
+beta|Beta distribution|three shapes|-a -x 0:1 -y 0:2.6 -s 57x16|30 x (1 - x)^4;;30 x^4 (1 - x);;6 x (1 - x)
+# Number theory|
+primes|Prime counting|`pi(x)`, the primes up to x, against `x / ln(x)`|-a -x 2:100 -y 0:26 -s 57x18|primecount(x);;x / ln(x)
+totient|Euler's totient|how many numbers up to n share no factor with n|-a -x 1:120 -y 0:120 -s 57x20|totient(x)
+divisors|Divisors|how many divisors n has|-a -x 1:120 -y 0:16.5 -s 57x18|divisors(x)
+collatz|Collatz|steps from n down to 1|-a -x 1:120 -y 0:120 -s 57x20|collatz(x)
+mobius|Mobius and Mertens|`mu(n)` and its running sum|-a -x 1:120 -y -4.2:2.2 -s 57x16|mobius(x);;mertens(x)
+digitsum|Digit sum|the sum of the digits of n|-a -x 0:200 -y 0:19 -s 57x16|digitsum(x)
+# Chaos|
+logistic|Logistic map|`x -> r x (1 - x)`: order, period doubling, chaos|-a -x 2.8:4 -y 0:1 -s 57x24|logistic(x)
+lyapunov|Lyapunov exponent|below zero order, above zero chaos|-a -x 2.8:4 -y -1.5:0.8 -s 57x18|lyapunov(x)
+sinemap|Sine map|`x -> r sin(pi x)`, the same road to chaos|-a -x 0.6:1 -y 0:1 -s 57x24|sinemap(x)
+mandelbrot|Mandelbrot set|`z -> z^2 + c` on the real line|-a -x -2:0.3 -y -2:2 -s 57x24|mandelbrot(x)
+# Fractals and noise|
+weierstrass|Weierstrass|continuous everywhere, smooth nowhere|-a -x -2:2 -y -2.1:2.1 -s 57x22|weierstrass(x)
+riemann|Riemann|`sum of sin(n^2 x) / n^2`|-a -x -6.3:6.3 -y -1.1:1.7 -s 57x20|riemann(x)
+cantor|Cantor, the devil's staircase|flat almost everywhere, still climbs from 0 to 1|-a -x 0:1 -y 0:1.05 -s 57x20|cantor(x)
+takagi|Takagi-Landsberg|the Blancmange with weights 0.3, 0.5 and 0.7|-a -x 0:1 -y 0:1.4 -s 57x20|takagi(0.7, x);;takagi(0.5, x);;takagi(0.3, x)
+minkowski|Minkowski question mark|continued fractions turned into binary|-a -x 0:1 -y 0:1.05 -s 57x20|minkowski(x);;x
+noise|Smooth noise|random heights, smoothly joined|-a -x 0:20 -y 0:1.05 -s 57x12|noise(x)
+terrain|Terrain|noise on noise: mountains|-a -x 0:20 -y 0:2 -s 57x14|terrain(x)
+skyline|Skyline|one building per unit, random heights|-a -x 0:30 -y 0:9 -s 57x14|skyline(x)
