@@ -9,6 +9,8 @@ Read a function of x written as text and calculate it.
   numbers 2 3.5   constants pi e   variable x
   + - * / ^ mod   |abs|   2x 3(x+1) |x|x (implicit *)
   sin cos tan asin acos atan sinh cosh tanh exp ln log sqrt abs floor ceil round
+  triangle blancmange expsaw expmod weierstrass riemann cantor
+  heart square sinc bessel gamma matharium sincosh
   D(f)     derivative of f
   I(f)     integral of f from 0 to x
   I(f,a)   integral of f from a to x
