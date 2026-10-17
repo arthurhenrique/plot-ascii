@@ -30,9 +30,6 @@ public:
   //Add a function y = func(x) to be plotted with token
   void AddCurve(std::function<double (double)> func, char token = '#');
 
-  //Remove every curve added
-  void ClearCurves();
-
   //Plot every curve added
   void PlotCurves();
 

@@ -9,34 +9,13 @@
 using namespace std;
 
 
-//x^2, Matharium and SinCosh, plotted or animated
-void Samples(MathPloText *math, bool animate)
+//x^2, plotted or animated
+void Sample(MathPloText *math, bool animate)
 {
   math->SetMatrix();
 
   if (animate) math->AnimateGraph(Pow, 2);
   else         math->PlotGraph(Pow, 2);
-
-  cout << endl
-       << "y = (1 - 2*floor(2*(x mod 1))) * |sin(pi*x/4)| * x + |x| - 10" << endl
-       << endl;
-
-  math->AddCurve(Matharium);
-  math->SetWindow(-20, 8, -11, 27, 57, 39);
-
-  if (animate) math->AnimateCurves();
-  else         math->PlotCurves();
-
-  cout << endl
-       << "y = sin(6.5x)^2 / cosh(x/2.6)" << endl
-       << endl;
-
-  math->ClearCurves();
-  math->AddCurve(SinCosh);
-  math->SetWindow(-4, 4, -0.1, 1.05, 57, 18);
-
-  if (animate) math->AnimateCurves();
-  else         math->PlotCurves();
 }
 
 void Help()
@@ -55,7 +34,7 @@ void Help()
        << "  D(f) derivative, I(f) integral from 0 to x, I(f,a) from a to x" << endl
        << endl
        << "  ./MathPloText -x -6.3:6.3 \"sin(x)\" \"D(sin(x))\" \"I(sin(x))\"" << endl
-       << "  ./MathPloText -a             animate the samples (x^2, Matharium, SinCosh)" << endl
+       << "  ./MathPloText -a             animate x^2" << endl
        << "  ./MathPloText -a -x -20:8 \"(1 - 2*floor(2*(x mod 1))) * |sin(pi*x/4)| * x + |x| - 10\"" << endl;
 }
 
@@ -117,10 +96,10 @@ int main(int argc, char *argv[])
     }
   }
 
-  //no expression: samples
+  //no expression: x^2
   if (curves == 0)
   {
-    Samples(math, animate);
+    Sample(math, animate);
     return 0;
   }
 

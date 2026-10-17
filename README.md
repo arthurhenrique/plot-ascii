@@ -8,7 +8,7 @@ Cartesian plan plotted with ASCII.
 
 ```sh
 cd src && make
-./MathPloText        # x^2, Matharium and SinCosh
+./MathPloText        # x^2
 ./MathPloText -a     # animated
 ```
 
