@@ -4,10 +4,6 @@ Cartesian plan plotted with ASCII.
 
 ![x^2](./sample/pow.gif)
 
-![Matharium](./sample/matharium.gif)
-
-![SinCosh](./sample/sincosh.gif)
-
 ## Run
 
 ```sh
@@ -37,6 +33,26 @@ Functions: `+ - * / ^ mod |x| pi e sin cos tan sinh cosh tanh exp ln log sqrt fl
 ## Functions
 
 Built in as `name(x)` in the CLI and `Name(x)` in `MathPloTextFunction.hpp`, except the last five, which are plain expressions.
+
+### Matharium
+
+`(1 - 2 floor(2 (x mod 1))) |sin(pi x/4)| x + |x| - 10`
+
+```sh
+./MathPloText -a -x -20:8 -y -11:27 -s 57x39 "matharium(x)"
+```
+
+![Matharium](./sample/functions/matharium.gif)
+
+### SinCosh
+
+`sin(6.5x)^2 / cosh(x/2.6)`
+
+```sh
+./MathPloText -a -x -4:4 -y -0.1:1.05 -s 57x18 "sincosh(x)"
+```
+
+![SinCosh](./sample/functions/sincosh.gif)
 
 ### Blancmange
 
@@ -197,6 +213,7 @@ squeezed to zero
 ```
 
 ![sin(e^-x)](./sample/functions/sinexp.gif)
+
 ## C++
 
 ```cpp
