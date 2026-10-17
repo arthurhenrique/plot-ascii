@@ -137,13 +137,6 @@ void MathPloText::AddCurve(std::function<double (double)> func, char token)
   curves_.push_back(curve);
 }
 
-/* remove every curve added
-*/
-void MathPloText::ClearCurves()
-{
-  curves_.clear();
-}
-
 /* plot every curve added
 */
 void MathPloText::PlotCurves()
