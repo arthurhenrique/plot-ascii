@@ -1,12 +1,12 @@
 """
 Make the README gallery from tools/gallery.txt.
 
-For every function it runs ./src/MathPloText, turns the frames of the
+For every function it runs ./MathPloText, turns the frames of the
 animation into sample/functions/<name>.gif, and writes the gallery
 between <!-- gallery --> and <!-- /gallery --> in README.md.
 
-    cd src && make && cd ..
-    python3 tools/gallery.py              # every function
+    make gallery                           # every function
+    python3 tools/gallery.py              # the same, after make
     python3 tools/gallery.py heart soliton # only these gifs
 
 Needs Pillow (pip install pillow) and the DejaVu Sans Mono font.
@@ -53,7 +53,7 @@ def command(item):
 
 def make_gif(item):
     args = ["./MathPloText"] + shlex.split(item["opts"]) + ["-d", "0"] + item["exprs"]
-    out = subprocess.run(args, capture_output=True, text=True, cwd=ROOT + "/src").stdout
+    out = subprocess.run(args, capture_output=True, text=True, cwd=ROOT).stdout
 
     lines = out.split("\n")
     legend = lines[:len(item["exprs"])]
