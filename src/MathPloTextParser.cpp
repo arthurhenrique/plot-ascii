@@ -1,10 +1,48 @@
 #include <cctype>
 #include <cmath>
 #include <cstdlib>
+#include <unordered_map>
 
 #include "MathPloTextParser.hpp"
 #include "MathPloTextFunction.hpp"
 
+
+typedef double (*MathFunc)(double);
+
+//every function of one argument the language knows, by name
+static const std::unordered_map<std::string, MathFunc> FUNCTIONS = {
+  {"sin",         sin},
+  {"cos",         cos},
+  {"tan",         tan},
+  {"asin",        asin},
+  {"acos",        acos},
+  {"atan",        atan},
+  {"sinh",        sinh},
+  {"cosh",        cosh},
+  {"tanh",        tanh},
+  {"exp",         exp},
+  {"ln",          log},
+  {"log",         log10},
+  {"sqrt",        sqrt},
+  {"abs",         fabs},
+  {"floor",       floor},
+  {"ceil",        ceil},
+  {"round",       round},
+  {"triangle",    Triangle},
+  {"blancmange",  Blancmange},
+  {"expsaw",      ExpSaw},
+  {"expmod",      ExpMod},
+  {"weierstrass", Weierstrass},
+  {"riemann",     Riemann},
+  {"cantor",      Cantor},
+  {"heart",       Heart},
+  {"square",      Square},
+  {"sinc",        Sinc},
+  {"bessel",      Bessel},
+  {"gamma",       Gamma},
+  {"matharium",   Matharium},
+  {"sincosh",     SinCosh},
+};
 
 MathPloTextParser::MathPloTextParser(std::string expr)
 {
@@ -180,42 +218,18 @@ double MathPloTextParser::Function(std::string name)
       y = Integral(f, from, x_);
     }
   }
-  else if (name == "sin")   y = sin(y);
-  else if (name == "cos")   y = cos(y);
-  else if (name == "tan")   y = tan(y);
-  else if (name == "asin")  y = asin(y);
-  else if (name == "acos")  y = acos(y);
-  else if (name == "atan")  y = atan(y);
-  else if (name == "sinh")  y = sinh(y);
-  else if (name == "cosh")  y = cosh(y);
-  else if (name == "tanh")  y = tanh(y);
-  else if (name == "exp")   y = exp(y);
-  else if (name == "ln")    y = log(y);
-  else if (name == "log")   y = log10(y);
-  else if (name == "sqrt")  y = sqrt(y);
-  else if (name == "abs")   y = fabs(y);
-  else if (name == "floor") y = floor(y);
-  else if (name == "ceil")  y = ceil(y);
-  else if (name == "round") y = round(y);
-  else if (name == "triangle")    y = Triangle(y);
-  else if (name == "blancmange")  y = Blancmange(y);
-  else if (name == "expsaw")      y = ExpSaw(y);
-  else if (name == "expmod")      y = ExpMod(y);
-  else if (name == "weierstrass") y = Weierstrass(y);
-  else if (name == "riemann")     y = Riemann(y);
-  else if (name == "cantor")      y = Cantor(y);
-  else if (name == "heart")       y = Heart(y);
-  else if (name == "square")      y = Square(y);
-  else if (name == "sinc")        y = Sinc(y);
-  else if (name == "bessel")      y = Bessel(y);
-  else if (name == "gamma")       y = Gamma(y);
-  else if (name == "matharium")   y = Matharium(y);
-  else if (name == "sincosh")     y = SinCosh(y);
   else
   {
-    pos_ = start - 1 - (int) name.size();
-    Fail("unknown function '" + name + "'");
-    return 0;
+    std::unordered_map<std::string, MathFunc>::const_iterator found = FUNCTIONS.find(name);
+
+    if (found == FUNCTIONS.end())
+    {
+      pos_ = start - 1 - (int) name.size();
+      Fail("unknown function '" + name + "'");
+      return 0;
+    }
+
+    y = found->second(y);
   }
 
   if (!Accept(')')) Fail("expected ')'");
