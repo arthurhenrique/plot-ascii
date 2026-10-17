@@ -197,6 +197,20 @@ double MathPloTextParser::Function(std::string name)
   else if (name == "floor") y = floor(y);
   else if (name == "ceil")  y = ceil(y);
   else if (name == "round") y = round(y);
+  else if (name == "triangle")    y = Triangle(y);
+  else if (name == "blancmange")  y = Blancmange(y);
+  else if (name == "expsaw")      y = ExpSaw(y);
+  else if (name == "expmod")      y = ExpMod(y);
+  else if (name == "weierstrass") y = Weierstrass(y);
+  else if (name == "riemann")     y = Riemann(y);
+  else if (name == "cantor")      y = Cantor(y);
+  else if (name == "heart")       y = Heart(y);
+  else if (name == "square")      y = Square(y);
+  else if (name == "sinc")        y = Sinc(y);
+  else if (name == "bessel")      y = Bessel(y);
+  else if (name == "gamma")       y = Gamma(y);
+  else if (name == "matharium")   y = Matharium(y);
+  else if (name == "sincosh")     y = SinCosh(y);
   else
   {
     pos_ = start - 1 - (int) name.size();

@@ -50,6 +50,8 @@ void Help()
        << endl
        << "  numbers, x, pi, e, + - * / ^ mod, |abs|, 2x" << endl
        << "  sin cos tan asin acos atan sinh cosh tanh exp ln log sqrt abs floor ceil round" << endl
+       << "  triangle blancmange expsaw expmod weierstrass riemann cantor" << endl
+       << "  heart square sinc bessel gamma matharium sincosh" << endl
        << "  D(f) derivative, I(f) integral from 0 to x, I(f,a) from a to x" << endl
        << endl
        << "  ./MathPloText -x -6.3:6.3 \"sin(x)\" \"D(sin(x))\" \"I(sin(x))\"" << endl
