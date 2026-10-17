@@ -6,11 +6,10 @@
 /*
 Read a function of x written as text and calculate it.
 
-  numbers 2 3.5   constants pi e   variable x
+  numbers 2 3.5   constants pi e   variables x and t (time, for -t)
   + - * / ^ mod   |abs|   2x 3(x+1) |x|x (implicit *)
   sin cos tan asin acos atan sinh cosh tanh exp ln log sqrt abs floor ceil round
-  triangle blancmange expsaw expmod weierstrass riemann cantor
-  heart square sinc bessel gamma matharium sincosh
+  every name in FUNCTIONS and FUNCTIONS2 (MathPloTextParser.cpp)
   D(f)     derivative of f
   I(f)     integral of f from 0 to x
   I(f,a)   integral of f from a to x
@@ -21,8 +20,8 @@ public:
   //Costructor
   MathPloTextParser(std::string expr);
 
-  //Value of the expression at x
-  double Eval(double x);
+  //Value of the expression at x and time t
+  double Eval(double x, double t = 0);
 
   //True if the expression can be read; if not, see Error() and Position()
   bool Check();
@@ -51,6 +50,7 @@ private:
   int pos_;
   int abs_;
   double x_;
+  double t_;
 };
 
 #endif //_MATH_PLO_TEXT_PARSER_HPP_

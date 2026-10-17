@@ -10,7 +10,7 @@ Main: MathPloText.o MathPloTextParser.o
 MathPloText.o: MathPloText.cpp MathPloText.hpp MathPloTextFunction.hpp
 	$(CXX) $(CPPFLAGS) -c MathPloText.cpp
 
-MathPloTextParser.o: MathPloTextParser.cpp MathPloTextParser.hpp MathPloTextFunction.hpp
+MathPloTextParser.o: MathPloTextParser.cpp MathPloTextParser.hpp MathPloTextFunction.hpp MathPloTextArsenal.hpp MathPloTextFluid.hpp
 	$(CXX) $(CPPFLAGS) -c MathPloTextParser.cpp
 
 clean:

@@ -13,6 +13,8 @@ MathPloText::MathPloText()
   length_min_ = 0;
   point_      = 0;
 
+  time_       = 0;
+
   SetWindow(-10, 10, -10, 10);
 }
 
@@ -131,6 +133,14 @@ void MathPloText::AnimateGraph(std::function<double (double,double)> func, doubl
 */
 void MathPloText::AddCurve(std::function<double (double)> func, char token)
 {
+  //same as a wave that does not change with time
+  AddWave([func](double x, double){ return func(x); }, token);
+}
+
+/* add a function of x and time to be plotted
+*/
+void MathPloText::AddWave(std::function<double (double,double)> func, char token)
+{
   Curve curve;
   curve.func  = func;
   curve.token = token;
@@ -186,6 +196,32 @@ void MathPloText::AnimateCurves(int delay_ms)
   PrintGrid();
 }
 
+/* plot every curve added, the whole graph once per frame,
+   with time going from 0 to t_max
+*/
+void MathPloText::AnimateTime(double t_max, int frames, int delay_ms)
+{
+  for (int frame = 0; frame < frames; ++frame)
+  {
+    time_ = t_max * frame / (frames - 1);
+
+    ClearGrid();
+
+    for (int column = 0; column < width_; ++column)
+    {
+      DrawColumn(column);
+    }
+
+    //cursor back to top of the graph, then draw this frame over the last one
+    if (frame > 0) printf("\033[%dA", height_ + 1);
+    printf("  t = %.2f\n", time_);
+    PrintGrid();
+    fflush(stdout);
+
+    usleep(delay_ms * 1000);
+  }
+}
+
 /* empty grid with x and y axes
 */
 void MathPloText::ClearGrid()
@@ -226,7 +262,7 @@ int MathPloText::DrawColumn(int column)
     for (int s = 0; s < samples; ++s)
     {
       double x = x_min_ + (column - 0.5 + (s + 0.5) / samples) * x_step;
-      double y = curves_[i].func(x);
+      double y = curves_[i].func(x, time_);
 
       int row = (int) round((y_max_ - y) / y_step);
 
@@ -268,22 +304,27 @@ void MathPloText::SetWindow(double x_min, double x_max, double y_min, double y_m
 
 /* y range from the lowest to the highest point of the curves
 */
-void MathPloText::FitWindow()
+void MathPloText::FitWindow(double t_max)
 {
   int samples = 2000;
+  int times   = t_max > 0 ? 10 : 1;
 
   y_min_ = 0;
   y_max_ = 0;
 
   for (size_t i = 0; i < curves_.size(); ++i)
   {
-    for (int s = 0; s <= samples; ++s)
+    for (int k = 0; k < times; ++k)
     {
-      double y = curves_[i].func(x_min_ + (x_max_ - x_min_) * s / samples);
+      for (int s = 0; s <= samples; ++s)
+      {
+        double t = times > 1 ? t_max * k / (times - 1) : 0;
+        double y = curves_[i].func(x_min_ + (x_max_ - x_min_) * s / samples, t);
 
-      if (!std::isfinite(y)) continue;
-      if (y < y_min_) y_min_ = y;
-      if (y > y_max_) y_max_ = y;
+        if (!std::isfinite(y)) continue;
+        if (y < y_min_) y_min_ = y;
+        if (y > y_max_) y_max_ = y;
+      }
     }
   }
 

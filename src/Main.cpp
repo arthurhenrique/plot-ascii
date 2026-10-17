@@ -20,21 +20,22 @@ void Sample(MathPloText *math, bool animate)
 
 void Help()
 {
-  cout << "usage: ./MathPloText [-a] [-x MIN:MAX] [-y MIN:MAX] [-s WIDTHxHEIGHT] \"f(x)\" ..." << endl
+  cout << "usage: ./MathPloText [-a | -t MAX] [-d MS] [-x MIN:MAX] [-y MIN:MAX] [-s WIDTHxHEIGHT] \"f(x)\" ..." << endl
        << endl
        << "  -a               animate, drawing x from left to right" << endl
+       << "  -t MAX           animate time t from 0 to MAX" << endl
+       << "  -d MS            milliseconds between frames (default 30 for -a, 60 for -t)" << endl
        << "  -x MIN:MAX       x range (default -10:10)" << endl
        << "  -y MIN:MAX       y range (default fits the curves)" << endl
        << "  -s WIDTHxHEIGHT  size in chars (default 57x30)" << endl
        << endl
-       << "  numbers, x, pi, e, + - * / ^ mod, |abs|, 2x" << endl
-       << "  sin cos tan asin acos atan sinh cosh tanh exp ln log sqrt abs floor ceil round" << endl
-       << "  triangle blancmange expsaw expmod weierstrass riemann cantor" << endl
-       << "  heart square sinc bessel gamma matharium sincosh" << endl
+       << "  numbers, x, t, pi, e, + - * / ^ mod, |abs|, 2x" << endl
+       << "  sin cos tan exp ln sqrt floor ... and every function in the README" << endl
        << "  D(f) derivative, I(f) integral from 0 to x, I(f,a) from a to x" << endl
        << endl
        << "  ./MathPloText -x -6.3:6.3 \"sin(x)\" \"D(sin(x))\" \"I(sin(x))\"" << endl
        << "  ./MathPloText -a             animate x^2" << endl
+       << "  ./MathPloText -t 3 -x -3.2:3.2 \"burgers(x, t)\"" << endl
        << "  ./MathPloText -a -x -20:8 \"(1 - 2*floor(2*(x mod 1))) * |sin(pi*x/4)| * x + |x| - 10\"" << endl;
 }
 
@@ -49,6 +50,8 @@ int main(int argc, char *argv[])
   int    width   = 57,  height = 30;
   bool   animate = false;
   bool   fit     = true;
+  double t_max   = 0;
+  int    delay   = -1;
 
   char tokens[] = "#*+o@%&=";
   int  curves   = 0;
@@ -63,6 +66,14 @@ int main(int argc, char *argv[])
     else if (strcmp(argv[i], "-a") == 0)
     {
       animate = true;
+    }
+    else if (strcmp(argv[i], "-t") == 0 && i + 1 < argc)
+    {
+      sscanf(argv[++i], "%lf", &t_max);
+    }
+    else if (strcmp(argv[i], "-d") == 0 && i + 1 < argc)
+    {
+      sscanf(argv[++i], "%d", &delay);
     }
     else if (strcmp(argv[i], "-x") == 0 && i + 1 < argc)
     {
@@ -90,7 +101,7 @@ int main(int argc, char *argv[])
       }
 
       char token = tokens[curves % 8];
-      math->AddCurve([parser](double x){ return parser->Eval(x); }, token);
+      math->AddWave([parser](double x, double t){ return parser->Eval(x, t); }, token);
       cout << "  " << token << "  y = " << argv[i] << endl;
       ++curves;
     }
@@ -103,17 +114,18 @@ int main(int argc, char *argv[])
     return 0;
   }
 
-  if (x_min >= x_max || y_min > y_max || width < 2 || height < 2)
+  if (x_min >= x_max || y_min > y_max || width < 2 || height < 2 || t_max < 0)
   {
     cout << "bad -x, -y or -s" << endl;
     return 1;
   }
 
   math->SetWindow(x_min, x_max, y_min, y_max, width, height);
-  if (fit) math->FitWindow();
+  if (fit) math->FitWindow(t_max);
 
-  if (animate) math->AnimateCurves();
-  else         math->PlotCurves();
+  if (t_max > 0)    math->AnimateTime(t_max, 60, delay < 0 ? 60 : delay);
+  else if (animate) math->AnimateCurves(delay < 0 ? 30 : delay);
+  else              math->PlotCurves();
 
   return 0;
 }

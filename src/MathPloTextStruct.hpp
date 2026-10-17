@@ -11,7 +11,7 @@ typedef struct
 
 typedef struct
 {
-  std::function<double (double)> func;
+  std::function<double (double,double)> func; //y = func(x, t)
   char token;
 }Curve;
 
