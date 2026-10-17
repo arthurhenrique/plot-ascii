@@ -7,9 +7,17 @@ Cartesian plan plotted with ASCII.
 ## Run
 
 ```sh
-cd src && make
+make
 ./MathPloText        # x^2
 ./MathPloText -a     # animated
+```
+
+Every function of the [gallery](#functions) has its own target:
+
+```sh
+make list            # every function, by category
+make burgers         # Burgers' shock
+make heart
 ```
 
 Any function of x:
